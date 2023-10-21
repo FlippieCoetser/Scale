@@ -12,14 +12,14 @@ describe("When services <- Axis.Parameter.Service()",{
     # Then
     services |> expect.list()
   })
-  it("then services contains 'Get.X.Start'",{
+  it("then services contains 'Get.X.Start' service.",{
     # When
     services <- Axis.Parameter.Service()
 
     # Then
     services[['Get.X.Start']] |> expect.exist()
   })
-  it("then services contains 'Get.X.End'",{
+  it("then services contains 'Get.X.End' service.",{
     # When
     services <- Axis.Parameter.Service()
 
