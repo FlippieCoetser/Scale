@@ -31,4 +31,17 @@ describe("When utilities <- parameters |> Scaler()",{
     # Then
     utilities[['X']] |> expect.exist()
   })
+  it("then utilities contains 'Y' utility",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    # When
+    utilities <- parameters |> Scaler()
+
+    # Then
+    utilities[['Y']] |> expect.exist()
+  })
 })
