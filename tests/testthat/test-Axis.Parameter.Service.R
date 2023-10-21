@@ -19,6 +19,13 @@ describe("When services <- Axis.Parameter.Service()",{
     # Then
     services[['Get.X.Start']] |> expect.exist()
   })
+  it("then services contains 'Get.X.End'",{
+    # When
+    services <- Axis.Parameter.Service()
+
+    # Then
+    services[['Get.X.End']] |> expect.exist()
+  })
 })
 
 describe("When service[['Get.X.Start']]()",{
