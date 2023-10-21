@@ -45,3 +45,29 @@ describe("When utilities <- parameters |> Scaler()",{
     utilities[['Y']] |> expect.exist()
   })
 })
+
+describe("When x |> scale[['X']]()",{
+  it("then x is scaled using parameters and x range",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    axis <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
+
+    x.range <- axis[['Get.X.Range']]()
+
+    x <- 2700
+
+    expected.x <- (x / parameters[['x']]) * x.range
+
+    scale <- parameters |> Scaler()
+
+    # When
+    actual.x <- x |> scale[['X']]()
+
+    # Then
+    actual.x |> expect.equal(expected.x)
+  })
+})
