@@ -1,1 +1,4 @@
-Axis.Parameter.Processor <- \() {}
+Axis.Parameter.Processor <- \(service) {
+  processors <- list()
+  return(processors)
+}
