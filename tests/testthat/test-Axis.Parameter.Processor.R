@@ -12,4 +12,11 @@ describe("When processors <- service |> Axis.Parameter.Processor()",{
     # Then
     processors |> expect.list()
   })
+  it("then processors contains 'Get.X.Range' processor",{
+    # When
+    processors <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
+
+    # Then
+    processors[['Get.X.Range']] |> expect.exist()
+  })
 })
