@@ -88,11 +88,11 @@ describe("When service[['Get.Y.Start']]()",{
 })
 
 describe("When service[['Get.Y.End']]()",{
-  it("then the x end position of the plot area is returned",{
+  it("then the y end position of the plot area is returned",{
     # Given
     service <- Axis.Parameter.Service()
 
-    expected.x.end <- par('usr')[3:4][[2]]
+    expected.y.end <- par('usr')[3:4][[2]]
 
     # When
     actual.y.end <- service[['Get.Y.End']]()
