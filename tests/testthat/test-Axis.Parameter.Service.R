@@ -20,3 +20,18 @@ describe("When services <- Axis.Parameter.Service()",{
     services[['Get.X.Start']] |> expect.exist()
   })
 })
+
+describe("When service[['Get.X.Start']]()",{
+  it("then the x start position of the plot area is returned",{
+    # Given
+    service <- Axis.Parameter.Service()
+
+    expected.x.start <- par('usr')[1:2][[1]]
+
+    # When
+    actual.x.start <- service[['Get.X.Start']]()
+
+    # Then
+    actual.x.start |> expect.equal(expected.x.start)
+  })
+})
