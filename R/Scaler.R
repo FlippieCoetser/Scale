@@ -5,6 +5,8 @@ Scaler <- \(parameters) {
   utilities[['X']] <- \(x) {
     (x / parameters[['x']]) * axis[['Get.X.Range']]()
   }
-  utilities[['Y']] <- \() {}
+  utilities[['Y']] <- \(y) {
+    (y / parameters[['y']]) * axis[['Get.Y.Range']]()
+  }
   return(utilities)
 }
