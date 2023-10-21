@@ -1,1 +1,4 @@
-Scaler <- \() {}
+Scaler <- \(parameters) {
+  utilities <- list()
+  return(utilities)
+}
