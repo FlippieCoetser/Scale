@@ -71,3 +71,29 @@ describe("When x |> scale[['X']]()",{
     actual.x |> expect.equal(expected.x)
   })
 })
+
+describe("When y |> scale[['Y']]()",{
+  it("then y is scaled using parameters and y range",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    axis <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
+
+    y.range <- axis[['Get.Y.Range']]()
+
+    y <- 2000
+
+    expected.y <- (y / parameters[['y']]) * y.range
+
+    scale <- parameters |> Scaler()
+
+    # When
+    actual.y <- y |> scale[['Y']]()
+
+    # Then
+    actual.y |> expect.equal(expected.y)
+  })
+})
