@@ -43,3 +43,19 @@ describe("When process[['Get.X.Range']]()",{
     actual.x.range |> expect.equal(expected.x.range)
   })
 })
+
+describe("When process[['Get.Y.Range']]()",{
+  it("then service[['Get.Y.End']]() - service[['Get.Y.Start']]() is returned",{
+    # Given
+    service <- Axis.Parameter.Service()
+    process <- service |> Axis.Parameter.Processor()
+
+    expected.y.range <- service[['Get.Y.End']]() - service[['Get.Y.Start']]()
+
+    # When
+    actual.y.range <- process[['Get.Y.Range']]()
+
+    # Then
+    actual.y.range |> expect.equal(expected.y.range)
+  })
+})
