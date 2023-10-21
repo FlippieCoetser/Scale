@@ -6,5 +6,7 @@ Axis.Parameter.Service <- \() {
   services[['Get.X.End']]   <- \() { 
     par('usr')[1:2][[2]]
   }
+  services[['Get.Y.Start']] <- \() {
+  }
   return(services)
 }
