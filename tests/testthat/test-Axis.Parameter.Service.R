@@ -64,3 +64,18 @@ describe("When service[['Get.X.End']]()",{
     actual.x.end |> expect.equal(expected.x.end)
   })
 })
+
+describe("When service[['Get.Y.Start']]()",{
+  it("then the x start position of the plot area is returned",{
+    # Given
+    service <- Axis.Parameter.Service()
+
+    expected.y.start <- par('usr')[3:4][[1]]
+
+    # When
+    actual.y.start <- service[['Get.Y.Start']]()
+
+    # Then
+    actual.y.start |> expect.equal(expected.y.start)
+  })
+})
