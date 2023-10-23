@@ -22,6 +22,11 @@ Scaler <- \(parameters) {
   utilities[['Y']]           <- \(y) {
     (y / parameters[['y']]) * axis[['Get.Y.Range']]()
   }
-  utilities[['Coordinates']] <- \() {}
+  utilities[['Coordinates']] <- \(coordinates) {
+    data.frame(
+      x = coordinates[['x']] |> utilities[['X']](),
+      y = coordinates[['y']] |> utilities[['Y']]()
+    )
+  }
   return(utilities)
 }
