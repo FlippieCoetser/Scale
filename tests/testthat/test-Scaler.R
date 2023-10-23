@@ -44,6 +44,19 @@ describe("When utilities <- parameters |> Scaler()",{
     # Then
     utilities[['Y']] |> expect.exist()
   })
+  it("then utilities contains 'Coordinates' utility",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    # When
+    utilities <- parameters |> Scaler()
+
+    # Then
+    utilities[['Coordinates']] |> expect.exist()
+  })
 })
 
 describe("When x |> scale[['X']]()",{
