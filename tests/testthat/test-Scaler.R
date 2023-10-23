@@ -110,3 +110,43 @@ describe("When y |> scale[['Y']]()",{
     actual.y |> expect.equal(expected.y)
   })
 })
+
+describe("When coordinates |> scale[['Coordinates']]()",{
+  it("then coordinates is scaled using parameters and axis ranges",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    axis <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
+
+    x.range <- axis[['Get.X.Range']]()
+    y.range <- axis[['Get.Y.Range']]()
+
+
+    x <- c(0,2000,2000,0,0)
+    y <- c(0,0,1000,1000,0)
+
+    coordinates <- data.frame(
+      x = x,
+      y = y
+    )
+
+    expected.x <- (x / parameters[['x']]) * x.range
+    expected.y <- (y / parameters[['y']]) * y.range
+
+    expected.coordinates <- data.frame(
+      x = expected.x,
+      y = expected.y
+    )
+
+    scale <- parameters |> Scaler()
+
+    # When
+    actual.coordinates <- coordinates |> scale[['Coordinates']]()
+
+    # Then
+    actual.coordinates |> expect.equal(expected.coordinates)
+  })
+})
