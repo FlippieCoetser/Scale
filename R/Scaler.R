@@ -12,7 +12,9 @@
 #' * `x |> scale[['X']]()`
 #' * `y |> scale[['Y']]()`
 #' @export
-Scaler <- \(parameters) {
+Scaler <- \(parameters = NULL) {
+  parameters <- if(parameters |> is.null()) list(x = 1, y = 1) else parameters
+
   axis <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
 
   utilities <- list()
