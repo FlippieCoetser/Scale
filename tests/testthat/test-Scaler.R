@@ -57,6 +57,16 @@ describe("When utilities <- parameters |> Scaler()",{
     # Then
     utilities[['Coordinates']] |> expect.exist()
   })
+  it("then no exception is thrown is parameters is NULL",{
+    # Given
+    parameters <- NULL
+
+    # When
+    utilities <- parameters |> Scaler()
+
+    # Then
+    utilities |> expect.list()
+  })
 })
 
 describe("When x |> scale[['X']]()",{
