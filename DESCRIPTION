@@ -1,6 +1,6 @@
 Package: Scale
-Title: Scale X and Y coordinates
-Version: 0.0.1.0000
+Title: Scale x and y coordinates
+Version: 0.0.1.0001
 Authors@R: 
     person(given = "Flippie",
            family = "Coetser",
