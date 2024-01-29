@@ -160,3 +160,68 @@ describe("When coordinates |> scale[['Coordinates']]()",{
     actual.coordinates |> expect.equal(expected.coordinates)
   })
 })
+
+describe("When utilities <- parameters |> Scaler(source = 'device')",{
+  it("then utilities is a list",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    # When
+    utilities <- parameters |> Scaler(source = 'device')
+
+    # Then
+    utilities |> expect.list()
+  })
+  it("then utilities contains 'X' utility",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    # When
+    utilities <- parameters |> Scaler(source = 'device')
+
+    # Then
+    utilities[['X']] |> expect.exist()
+  })
+  it("then utilities contains 'Y' utility",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    # When
+    utilities <- parameters |> Scaler(source = 'device')
+
+    # Then
+    utilities[['Y']] |> expect.exist()
+  })
+  it("then utilities contains 'Coordinates' utility",{
+    # Given
+    parameters <- data.frame(
+      x = 3000,
+      y = 2500
+    )
+
+    # When
+    utilities <- parameters |> Scaler(source = 'device')
+
+    # Then
+    utilities[['Coordinates']] |> expect.exist()
+  })
+  it("then no exception is thrown is parameters is NULL",{
+    # Given
+    parameters <- NULL
+
+    # When
+    utilities <- parameters |> Scaler(source = 'device')
+
+    # Then
+    utilities |> expect.list()
+  })
+})
