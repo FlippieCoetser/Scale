@@ -15,14 +15,19 @@
 Scaler <- \(parameters = NULL, source = NULL) {
   parameters <- if(parameters |> is.null()) list(x = 1, y = 1) else parameters
 
-  axis <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
+  processors <- list()
+  if (source |> is.null()) {
+    processors <- Axis.Parameter.Service() |> Axis.Parameter.Processor()
+  } else {
+    processors <- Device.Parameter.Service() |> Device.Parameter.Processor()
+  }
 
   utilities <- list()
   utilities[['X']]           <- \(x) {
-    (x / parameters[['x']]) * axis[['Get.X.Range']]()
+    (x / parameters[['x']]) * processors[['Get.X.Range']]()
   }
   utilities[['Y']]           <- \(y) {
-    (y / parameters[['y']]) * axis[['Get.Y.Range']]()
+    (y / parameters[['y']]) * processors[['Get.Y.Range']]()
   }
   utilities[['Coordinates']] <- \(coordinates) {
     data.frame(
