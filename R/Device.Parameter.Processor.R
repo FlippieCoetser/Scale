@@ -1,1 +1,4 @@
-Device.Parameter.Processor <- \() {}
+Device.Parameter.Processor <- \(service) {
+  processors <-  list()
+  processors
+}
