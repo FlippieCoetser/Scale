@@ -3,5 +3,7 @@ Device.Parameter.Processor <- \(service) {
   processors[['Get.X.Range']] <- \() {
     service[['Get.Width']]()
   }
+  processors[['Get.Y.Range']] <- \() {
+  }
   processors
 }
