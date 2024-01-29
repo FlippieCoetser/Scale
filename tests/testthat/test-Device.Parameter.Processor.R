@@ -26,3 +26,20 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
     processors[['Get.X.Range']] |> expect.exist()
   })
 })
+
+describe("When processor[['Get.X.Range']]()",{
+  it("then service[['Get.Width']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.width <- service[['Get.Width']]()
+    expect.x.range <- device.width
+       
+    # When
+    retrieved.x.range <- processors[['Get.X.Range']]()
+
+    # Then
+    retrieved.x.range |> expect.equal(expect.x.range)
+  })
+})
