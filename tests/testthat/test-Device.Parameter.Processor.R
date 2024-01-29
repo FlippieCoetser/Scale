@@ -53,3 +53,20 @@ describe("When processor[['Get.X.Range']]()",{
     retrieved.x.range |> expect.equal(expect.x.range)
   })
 })
+
+describe("When processor[['Get.Y.Range']]()",{
+  it("then service[['Get.Height']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.height <- service[['Get.Height']]()
+    expect.y.range <- device.height
+       
+    # When
+    retrieved.y.range <- processors[['Get.Y.Range']]()
+
+    # Then
+    retrieved.y.range |> expect.equal(expect.y.range)
+  })
+})
