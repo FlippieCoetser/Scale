@@ -74,6 +74,24 @@ describe("When processor[['Get.X.Range']]()",{
   })
 })
 
+describe("When processor[['Get.Norm.X.Range']]()",{
+  it("then service[['Get.Width']] / service[['Get.Height']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.width <- service[['Get.Width']]()
+    device.height <- service[['Get.Height']]()
+    expect.norm.x.range <- device.width / device.height
+       
+    # When
+    retrieved.norm.x.range <- processors[['Get.Norm.X.Range']]()
+
+    # Then
+    retrieved.norm.x.range |> expect.equal(expect.norm.x.range)
+  })
+})
+
 describe("When processor[['Get.Y.Range']]()",{
   it("then service[['Get.Height']] is returned",{
     # Given
