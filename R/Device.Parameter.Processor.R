@@ -10,6 +10,7 @@ Device.Parameter.Processor <- \(service) {
     service[['Get.Height']]()
   }
   processors[['Get.Norm.Y.Range']] <- \() {
+    service[['Get.Height']]() / service[['Get.Height']]()
   }
   processors
 }
