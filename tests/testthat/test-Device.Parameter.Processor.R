@@ -25,6 +25,16 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
     # Then
     processors[['Get.X.Range']] |> expect.exist()
   })
+  it("then processors contains 'Get.Norm.X.Range' processor.", {
+    # Given
+    service <- Device.Parameter.Service()
+
+    # When
+    processors <-  service |> Device.Parameter.Processor()
+
+    # Then
+    processors[['Get.Norm.X.Range']] |> expect.exist()
+  })
   it("then processors contains 'Get.Y.Range' processor.",{
     # Given
     service <- Device.Parameter.Service()
