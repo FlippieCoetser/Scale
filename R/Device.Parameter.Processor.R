@@ -8,5 +8,7 @@ Device.Parameter.Processor <- \(service) {
   processors[['Get.Y.Range']] <- \() {
     service[['Get.Height']]()
   }
+  processors[['Get.Norm.Y.Range']] <- \() {
+  }
   processors
 }
