@@ -25,6 +25,16 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
     # Then
     processors[['Get.X.Range']] |> expect.exist()
   })
+  it("then processors contains 'Get.Norm.X.Range' processor.", {
+    # Given
+    service <- Device.Parameter.Service()
+
+    # When
+    processors <-  service |> Device.Parameter.Processor()
+
+    # Then
+    processors[['Get.Norm.X.Range']] |> expect.exist()
+  })
   it("then processors contains 'Get.Y.Range' processor.",{
     # Given
     service <- Device.Parameter.Service()
@@ -34,6 +44,16 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
 
     # Then
     processors[['Get.Y.Range']] |> expect.exist()
+  })
+  it("then processors contains 'Get.Norm.Y.Range' processor.",{
+    # Given
+    service <- Device.Parameter.Service()
+
+    # When
+    processors <-  service |> Device.Parameter.Processor()
+
+    # Then
+    processors[['Get.Norm.Y.Range']] |> expect.exist()
   })
 })
 
@@ -54,6 +74,24 @@ describe("When processor[['Get.X.Range']]()",{
   })
 })
 
+describe("When processor[['Get.Norm.X.Range']]()",{
+  it("then service[['Get.Width']] / service[['Get.Height']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.width <- service[['Get.Width']]()
+    device.height <- service[['Get.Height']]()
+    expect.norm.x.range <- device.width / device.height
+       
+    # When
+    retrieved.norm.x.range <- processors[['Get.Norm.X.Range']]()
+
+    # Then
+    retrieved.norm.x.range |> expect.equal(expect.norm.x.range)
+  })
+})
+
 describe("When processor[['Get.Y.Range']]()",{
   it("then service[['Get.Height']] is returned",{
     # Given
@@ -68,5 +106,22 @@ describe("When processor[['Get.Y.Range']]()",{
 
     # Then
     retrieved.y.range |> expect.equal(expect.y.range)
+  })
+})
+
+describe("When processor[['Get.Norm.Y.Range']]()",{
+  it("then service[['Get.Height']] / service[['Get.Height']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.height <- service[['Get.Height']]()
+    expect.norm.y.range <- device.height / device.height
+       
+    # When
+    retrieved.norm.y.range <- processors[['Get.Norm.Y.Range']]()
+
+    # Then
+    retrieved.norm.y.range |> expect.equal(expect.norm.y.range)
   })
 })
