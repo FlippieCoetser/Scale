@@ -1,6 +1,7 @@
 Device.Parameter.Processor <- \(service) {
   processors <-  list()
-  processors[['Get.Aspect.Ratio']] <- \() { 
+  processors[['Get.Aspect.Ratio']] <- \() {
+    service[['Get.Width']]() / service[['Get.Height']]() 
   }
   processors[['Get.X.Range']] <- \() {
     service[['Get.Width']]()
