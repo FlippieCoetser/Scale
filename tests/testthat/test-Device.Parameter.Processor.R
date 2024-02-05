@@ -67,6 +67,24 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
   })
 })
 
+describe("When processor[['Get.Aspect.Ration']]()",{
+  it("then service[['Get.Width']] / service[['Get.Height']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.width <- service[['Get.Width']]()
+    device.height <- service[['Get.Height']]()
+    expect.aspect.ratio <- device.width / device.height
+       
+    # When
+    retrieved.aspect.ratio <- processors[['Get.Aspect.Ratio']]()
+
+    # Then
+    retrieved.aspect.ratio |> expect.equal(expect.aspect.ratio)
+  })
+})
+
 describe("When processor[['Get.X.Range']]()",{
   it("then service[['Get.Width']] is returned",{
     # Given
