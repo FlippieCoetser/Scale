@@ -1,5 +1,8 @@
 Axis.Parameter.Processor <- \(service) {
   processors <- list()
+  processors[['Get.Aspect.Ratio']] <- \() {
+    processors[['Get.X.Range']]() / processors[['Get.Y.Range']]()
+  }
   processors[['Get.X.Range']] <- \() {
     service[['Get.X.End']]() - service[['Get.X.Start']]()
   }
