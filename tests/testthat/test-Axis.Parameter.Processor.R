@@ -35,6 +35,22 @@ describe("When processors <- service |> Axis.Parameter.Processor()",{
   })
 })
 
+describe("When processor[['Get.Aspect.Ratio']]()",{
+  it("then service[['Get.Width']]() / service[['Get.Height']]() is returned",{
+    # Given
+    service <- Axis.Parameter.Service()
+    processor <- service |> Axis.Parameter.Processor()
+
+    expected.aspect.ratio <- processor[['Get.X.Range']]() / processor[['Get.Y.Range']]()
+
+    # When
+    actual.aspect.ratio <- processor[['Get.Aspect.Ratio']]()
+
+    # Then
+    actual.aspect.ratio |> expect.equal(expected.aspect.ratio)
+  })
+})
+
 describe("When process[['Get.X.Range']]()",{
   it("then service[['Get.X.End']]() - service[['Get.X.Start']]() is returned",{
     # Given
