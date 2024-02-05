@@ -15,6 +15,16 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
     # Then
     processors |> expect.list()
   })
+  it("then processors contains 'Get.Aspect.Ratio' processor.", {
+    # Given
+    service <- Device.Parameter.Service()
+
+    # When
+    processors <-  service |> Device.Parameter.Processor()
+
+    # Then
+    processors[['Get.Aspect.Ratio']] |> expect.exist()
+  })
   it("then processors contains 'Get.X.Range' processor.", {
     # Given
     service <- Device.Parameter.Service()
@@ -54,6 +64,24 @@ describe("When processors <- service |> Device.Parameter.Processor()", {
 
     # Then
     processors[['Get.Norm.Y.Range']] |> expect.exist()
+  })
+})
+
+describe("When processor[['Get.Aspect.Ration']]()",{
+  it("then service[['Get.Width']] / service[['Get.Height']] is returned",{
+    # Given
+    service <- Device.Parameter.Service()
+    processors <-  service |> Device.Parameter.Processor()
+
+    device.width <- service[['Get.Width']]()
+    device.height <- service[['Get.Height']]()
+    expect.aspect.ratio <- device.width / device.height
+       
+    # When
+    retrieved.aspect.ratio <- processors[['Get.Aspect.Ratio']]()
+
+    # Then
+    retrieved.aspect.ratio |> expect.equal(expect.aspect.ratio)
   })
 })
 
